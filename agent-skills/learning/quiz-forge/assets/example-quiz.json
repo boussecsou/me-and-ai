@@ -1,0 +1,25 @@
+{
+  "quiz_title": "Credential security in n8n",
+  "language": "en",
+  "source_description": "Chapter 4 of the internal course on self-hosted n8n architecture",
+  "target_audience": "Audience already familiar with n8n basics",
+  "items": [
+    {
+      "id": "q1",
+      "bloom_level": "apply",
+      "stem": "An n8n workflow is exported as JSON and shared with an external contractor. The workflow uses an API credential stored in n8n. Does the exported JSON file contain the value of that credential?",
+      "options": [
+        { "id": "a", "text": "No, n8n stores credentials separately and never includes them in a workflow export" },
+        { "id": "b", "text": "Yes, but only if the workflow has been executed at least once before the export" },
+        { "id": "c", "text": "Yes, the credential is always included in plain text in the exported JSON" }
+      ],
+      "correct_option_id": "a",
+      "explanations": {
+        "a": "Correct: n8n separates credential storage from workflow storage precisely to avoid this risk when exporting or sharing.",
+        "b": "Wrong: whether the workflow has run has no effect on what the exported JSON contains; this confuses execution state with export content.",
+        "c": "Wrong: this is the most common misconception on this topic, often by analogy with tools that do embed secrets directly in their exported config files."
+      },
+      "source_ref": "Chapter 4, section \"Credential storage\": credentials are encrypted and stored in a separate table, referenced by ID from the workflow."
+    }
+  ]
+}
