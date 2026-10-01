@@ -27,6 +27,10 @@ python3 scripts/validate_skills.py
 
 Include the validation result and any limitations in your pull request. For changes to the checker, exercise both valid and invalid quiz input. Mechanical checks supplement human review of source grounding, explanations, and difficulty.
 
+## Commit identity
+
+Before committing, check `git config user.name` and `git config user.email`. Use a verified email address associated with your GitHub account, or your GitHub-provided `noreply` address, so contributions are attributed correctly. In shared environments, configure your identity with `git config --local` for this repository.
+
 ## Sensitive information
 
 Do not submit API keys, tokens, passwords, private conversations, personal data, or confidential documents. Use synthetic or properly anonymized examples. Follow [SECURITY.md](SECURITY.md) for suspected vulnerabilities; do not disclose them in public issues.
