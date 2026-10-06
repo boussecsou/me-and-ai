@@ -52,6 +52,14 @@ See `references/item-writing-rules.md` for the full list with good/bad examples.
 - **Forbidden:** "all of the above," "none of the above," negatively-phrased stems without clear emphasis, grammatical cues that give away the answer (singular/plural agreement, articles), a correct answer that's systematically longer or more detailed than the distractors.
 - **One idea per item.** Never test two concepts at once; if the learner gets it wrong, it should be clear exactly what they got wrong.
 
+#### Mandatory option balancing (every question, every delivery format)
+
+Before finalizing each MCQ, apply [option balancing](references/option-balancing.md). Count **words, not characters**, in the displayed option texts, excluding labels and feedback. Choose a common grammatical template and sentence count (normally one sentence or one short fragment per option), then draft every option to a similar word budget.
+
+The maximum difference between the longest and shortest option is `max(2, ceil(0.20 × median option word count))` words. This is a practical Quiz Forge tolerance, not a research-validated universal cutoff. For example, counts of 10/11/12 pass; 10/11/14 require rewriting. Match sentence counts too. Prefer even closer wording when natural; equal word counts alone do not establish equal detail or plausibility.
+
+Shorten unnecessary qualifications in the key, move shared context into the stem, and place justifications in feedback. Never pad distractors with filler, invent facts, or remove conditions essential to correctness just to meet the budget; rewrite the item instead. Check all options, not only the key. Do not create a replacement cue by always making the key shortest or always tying it with one distractor. Across the quiz, check whether the key is repeatedly the uniquely longest option even within the tolerance; revise wording if that cue recurs. Preserve logical option order where appropriate.
+
 ### 4. Ground every item in the source (anti-hallucination)
 
 This is the step most automated quiz generators skip, and it's the leading documented cause of poor quality in AI-generated questions: invented facts, distractors disconnected from the actual content, "correct" answers that aren't quite correct.
@@ -66,7 +74,7 @@ For every option, write a short explanation: why the correct answer is correct, 
 
 ### 6. Self-check before delivering
 
-Before presenting the final result, review every item against `references/qa-checklist.md`. If the quiz is generated as structured JSON (see below), also run `scripts/qa_check.py` on the file to catch mechanical flaws automatically (duplicate options, abnormal length, forbidden phrasing, missing fields). Fix everything flagged before showing the result. Don't expose this verification work to the user, just deliver a clean quiz, unless they explicitly ask to see the audit.
+Before presenting the final result, review every item against `references/qa-checklist.md`. When Python execution is available, save the internal structured quiz as JSON and run `scripts/qa_check.py` before rendering any delivery format, including native widgets and plain text. It checks duplicate options, word-count and sentence-count imbalance, recurring longest-key cues, forbidden phrasing, and missing fields. Fix flagged issues and rerun; inspect sentence-segmentation false positives manually as documented in `references/option-balancing.md`. If execution is unavailable, count words and sentence units explicitly rather than estimating visually. Do not claim automated validation when it was not run. Don't expose this verification work to the user, just deliver a clean quiz, unless they explicitly ask to see the audit.
 
 ## Output format
 

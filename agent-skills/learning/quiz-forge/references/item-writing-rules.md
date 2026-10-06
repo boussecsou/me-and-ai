@@ -23,6 +23,8 @@ An MCQ item has two parts: the stem and the options, one of which is the correct
 
 - **3 to 4 options, no more.** Rodriguez's (2005) meta-analysis of 80 years of research shows 3 well-constructed options measure as well as a longer list: beyond that, extra distractors are almost never chosen (they don't "function") and just lengthen reading time.
 - **Homogeneous** in content, length, and grammatical register. A correct answer that's noticeably longer, more precise, or more technically phrased than the distractors is the most classic and most exploited guessing cue.
+- **Measure option balance in words, not characters.** Follow [option-balancing.md](option-balancing.md): a shared sentence count, parallel structure, and a maximum word-count spread of `max(2, ceil(0.20 × median word count))`. Keep explanations outside the displayed choices. These operational thresholds are Quiz Forge design choices, not universal empirical cutoffs.
+- **Check other wording cues.** Avoid a key that alone repeats distinctive stem wording, contains careful caveats, or uses a more academic register. Do not make every distractor absolute ("always", "never") while only the key is qualified; use absolutes only when the source and task justify them.
 - **Mutually exclusive**, never overlapping between two options.
 - **Plausible and homogeneous.** A distractor no serious learner would ever pick tests nothing; it just artificially inflates the success rate. The best distractor corresponds to a genuinely documented or predictable error on this exact topic (confusion between two similar concepts, a typical calculation mistake, over-generalizing a rule).
 - **Logical order when one exists** (chronological, numerical, alphabetical), otherwise randomized, never an order that systematically places the correct answer in the same spot.
@@ -56,9 +58,9 @@ Flaws: stem is meaningless without the options, distractor B is absurd, C and D 
 
 **Good item (Apply level):**
 
-> A web server normally responds on port 80. A client can't connect even though the server is running and no firewall is active. What's the most likely cause?
-> A. The server is listening on a port other than 80
-> B. The client is using HTTPS instead of HTTP
-> C. The domain name isn't pointing to the correct IP address
+> Source for this exercise: HTTP uses port 80 by default; a custom port must be specified in the URL. The server log says it accepts connections only on port 8080. A client requests `http://192.0.2.10/` at the server's correct IP address, with no firewall. Why does the connection fail?
+> A. The client connects to port 80 instead of port 8080.
+> B. The client resolves the domain to an incorrect IP address.
+> C. The client negotiates TLS with a server that requires HTTP.
 >
-> (Three plausible, distinct causes of the same symptom, options homogeneous in length, a real scenario to diagnose rather than a fact to recall.)
+> (A is the key. Every option has 11 words and one sentence. B confuses a direct IP request with DNS resolution; C confuses HTTP with HTTPS. The source and scenario rule out both distractors, resolving the original example's ambiguity.)

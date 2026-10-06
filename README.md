@@ -36,7 +36,7 @@ Python 3.12 is used in CI. The current checks require only the Python standard l
 python3 scripts/validate_skills.py
 ```
 
-This checks skill archive integrity, correspondence between packaged files and checked-in sources, and the bundled quiz example with its quality checker. It also verifies that the checker rejects duplicate answer options. These checks do not establish the factual or pedagogical quality of generated quizzes.
+This checks skill archive integrity, correspondence between packaged files and checked-in sources, and the bundled quiz example with its quality checker. It also exercises duplicate options, word and sentence balance, counting conventions, tolerance boundaries, and recurring longest-correct-answer cues. These checks do not establish the factual or pedagogical quality of generated quizzes.
 
 ## Contribute and use safely
 

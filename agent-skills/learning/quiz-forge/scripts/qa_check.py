@@ -18,6 +18,9 @@ Usage:
 """
 
 import json
+import math
+import re
+from statistics import median
 import sys
 
 # Non-exhaustive: "all/none of the above" equivalents in a few common
@@ -37,7 +40,31 @@ FORBIDDEN_PATTERNS = [
 
 MIN_OPTIONS = 3
 MAX_OPTIONS = 4
-LENGTH_RATIO_WARNING = 2.0  # longest option / shortest option
+WORD_SPREAD_FRACTION = 0.20
+MIN_WORD_SPREAD = 2
+
+
+def word_count(text):
+    """Count whitespace-separated tokens containing a letter or number.
+
+    Apostrophes, hyphens and technical tokens stay intact; punctuation-only
+    tokens do not count. Languages without word spaces need manual review.
+    """
+    return sum(any(char.isalnum() for char in token) for token in text.split())
+
+
+def sentence_count(text):
+    """Approximate sentence units, treating an unpunctuated fragment as one.
+
+    Ignore common French/English abbreviations and decimal points. This is
+    a heuristic, not a multilingual sentence parser; review code/math manually.
+    """
+    text = re.sub(
+        r"\b(?:e\.g\.|i\.e\.|etc\.|M\.|Mme\.|Dr\.|Mr\.|Mrs\.|Ms\.|vs\.)",
+        lambda match: match.group().replace(".", ""), text, flags=re.IGNORECASE,
+    )
+    parts = re.split(r'[.!?]+["”»\')\]]*(?:\s+|$)', text.strip())
+    return sum(word_count(part) > 0 for part in parts)
 
 
 def check_item(item, index):
@@ -78,16 +105,25 @@ def check_item(item, index):
                     f"[{item_id}] forbidden phrasing detected: \"{pattern}\""
                 )
 
-    # Length imbalance between options (a classic guessing cue)
-    lengths = [len(t) for t in option_texts if t.strip()]
+    # Compare words, never characters; apply the same rule to every option.
+    lengths = [word_count(text) for text in option_texts]
+    for opt, count in zip(options, lengths):
+        if count == 0:
+            issues.append(f"[{item_id}] option '{opt.get('id')}' has no words")
     if lengths and min(lengths) > 0:
-        ratio = max(lengths) / min(lengths)
-        if ratio > LENGTH_RATIO_WARNING:
+        allowed = max(MIN_WORD_SPREAD, math.ceil(WORD_SPREAD_FRACTION * median(lengths)))
+        if max(lengths) - min(lengths) > allowed:
             issues.append(
-                f"[{item_id}] strong length imbalance between options "
-                f"(ratio {ratio:.1f}), check that the correct answer isn't "
-                f"mechanically standing out"
+                f"[{item_id}] word-count imbalance: "
+                f"{dict(zip(option_ids, lengths))}; maximum spread {allowed} words. "
+                f"Rewrite options without padding or removing essential qualifications"
             )
+    sentences = [sentence_count(text) for text in option_texts]
+    if sentences and len(set(sentences)) > 1:
+        issues.append(
+            f"[{item_id}] sentence-count imbalance: {dict(zip(option_ids, sentences))}; "
+            f"use the same sentence structure and review segmentation manually"
+        )
 
     # Valid correct-answer key
     correct_id = item.get("correct_option_id")
@@ -122,6 +158,26 @@ def check_quiz(data):
 
     for i, item in enumerate(items):
         all_issues.extend(check_item(item, i))
+
+    # Detect a recurrent cue even when individual word counts are close.
+    eligible = 0
+    longest_keys = 0
+    for item in items:
+        options = item.get("options", [])
+        lengths = [word_count(opt.get("text", "")) for opt in options]
+        keys = [i for i, opt in enumerate(options)
+                if opt.get("id") == item.get("correct_option_id")]
+        if not MIN_OPTIONS <= len(lengths) <= MAX_OPTIONS or not all(lengths) or len(keys) != 1:
+            continue
+        eligible += 1
+        if lengths[keys[0]] == max(lengths) and lengths.count(max(lengths)) == 1:
+            longest_keys += 1
+    if eligible >= 5 and longest_keys / eligible > 0.6:
+        all_issues.append(
+            f"The correct answer is uniquely longest by word count in "
+            f"{longest_keys}/{eligible} questions (over 60%); revise wording "
+            f"to remove the recurring length cue, not just shuffle options"
+        )
 
     # Distribution of correct-answer positions (detects an overly regular pattern)
     positions = [item.get("correct_option_id") for item in items]

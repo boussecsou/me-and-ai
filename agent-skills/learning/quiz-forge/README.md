@@ -27,7 +27,7 @@ To check your own quiz, replace the final path with your JSON file. Exit code `0
 
 The checker reads the supplied JSON file and reports issues to standard output. It does not write files or contact external services.
 
-It checks answer counts, duplicate options, selected forbidden phrases, answer-length imbalance, answer keys, and the presence of explanations, source references, and Bloom levels. It does not verify that answers are true, that source references are accurate, or that distractors and difficulty are appropriate. Human review remains necessary.
+It checks answer counts, duplicate options, selected forbidden phrases, word-count spread, sentence-count balance, recurring longest-correct-answer cues, answer keys, and the presence of explanations, source references, and Bloom levels. The maximum word spread is the greater of two words or 20% of the median option count, rounded up; sentence counts should match. See [option balancing](references/option-balancing.md) for evidence, counting conventions, and repair guidance. These are operational rules, not universal research thresholds. Sentence segmentation is approximate and languages without word spaces require manual review. It does not verify that answers are true, that source references are accurate, or that distractors and difficulty are appropriate. Human review remains necessary.
 
 Only share source material you are authorized to use. Generated quizzes may contain mistakes and should be reviewed before assessment or publication.
 
