@@ -11,6 +11,7 @@ Some projects are ready to use; others are exploratory. Each project should docu
 | Project | Type | Purpose | Status |
 | --- | --- | --- | --- |
 | [Quiz Forge](agent-skills/learning/quiz-forge/README.md) | Agent skill | Generate source-grounded learning quizzes with feedback and a mechanical quality checker | Available; sample validation automated |
+| [Make It Click](agent-skills/learning/make-it-click/README.md) | Agent skill | Explain any concept so a specific audience understands, remembers, and can retell it | Available; package integrity validated |
 
 ## Explore the repository
 
@@ -26,7 +27,7 @@ Only directories containing actual work are created. The repository is a collect
 2. Check its requirements, permissions, and limitations before using it.
 3. Follow its instructions to use the sources or packaged artifact.
 
-For Quiz Forge, the sources are readable in [`agent-skills/learning/quiz-forge/`](agent-skills/learning/quiz-forge/), and the distributable is [`quiz-forge.skill`](agent-skills/learning/quiz-forge.skill).
+For Quiz Forge, the sources are readable in [`agent-skills/learning/quiz-forge/`](agent-skills/learning/quiz-forge/), and the distributable is [`quiz-forge.skill`](agent-skills/learning/quiz-forge.skill). Make It Click follows the same layout: [`agent-skills/learning/make-it-click/`](agent-skills/learning/make-it-click/) and [`make-it-click.skill`](agent-skills/learning/make-it-click.skill).
 
 ## Validation
 
