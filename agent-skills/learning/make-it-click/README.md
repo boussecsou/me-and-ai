@@ -13,12 +13,13 @@ The skill contains instructions only: no scripts, API keys, network access, or d
 The skill gives the agent a toolkit of moves and the judgment to pick among them:
 
 - **Find the core** (peel the onion): the one idea the listener should keep.
-- **Wrap the core** (the chocolate): a story, metaphor, name, rule, equation, or diagram that makes it stick.
-- **Build the tower**: lay the minimum prerequisites in dependency order.
-- **Open a knowledge gap**: create curiosity before giving the answer, when attention isn't already there.
-- **Anchor with metaphors and examples**, **name the phenomenon**, and **check the landing**.
+- **Clear wrong bricks**: surface and fix a common misconception instead of building over it.
+- **Build the tower**: lay the minimum prerequisites in dependency order, each with a concrete anchor.
+- **Open a gap**: create curiosity once the listener knows enough to feel it.
+- **Wrap the core** (the chocolate): a story, metaphor, name, rule, equation, or diagram that makes it stick, true at the precision it implies.
+- **Name it**, **show it** (traces, worked numbers, tables, diagrams), and **check the landing** with application rather than "does that make sense?".
 
-It reads the situation first (who the listener is, why they ask, where they're stuck, the medium, and the final audience) and composes only the moves that serve it. A quick chat question gets a short answer built around its core; a board brief, lesson, or "I still don't get it" follow-up gets a different shape.
+It reads the listener from the session (what they know and believe, why they ask, live signals, the final audience), picks an answer-first or build-up shape, and adapts to the type of concept (procedure, mechanism, formal idea, category, comparison, contested topic). A plain direct answer stays plain when it already lands.
 
 ## Use the skill
 
