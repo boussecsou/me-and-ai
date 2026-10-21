@@ -1,9 +1,9 @@
 ---
-name: concept-explainer
+name: make-it-click
 description: Explains any concept, mechanism, or idea so a specific person understands it, remembers it, and can pass it on, adapting depth, order, and imagery to that person and the moment instead of following a fixed template. Use this skill whenever someone asks what something is or how it works, says they don't get something, asks for a simpler, ELI5, or more intuitive version, wants an analogy or metaphor, or needs help explaining an idea to someone else (team, manager, clients, students, children). This includes rewriting jargon-heavy text for non-experts, onboarding docs, lessons, and executive briefs, even if the word "explain" never appears. Built on the curse of knowledge, the core-and-wrapper (onion and chocolate) method, the tower of knowledge, and the knowledge gap.
 ---
 
-# Concept Explainer
+# Make It Click
 
 ## Why this skill exists
 

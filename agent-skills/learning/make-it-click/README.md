@@ -1,10 +1,10 @@
-# Concept Explainer
+# Make It Click
 
 An agent skill for explaining any concept so a specific audience understands it, remembers it, and can pass it on. It adapts to the person, the purpose, and the moment instead of imposing a fixed template.
 
 ## Status and requirements
 
-Available as readable sources and as [`../concept-explainer.skill`](../concept-explainer.skill), a ZIP package. Import compatibility depends on your AI platform; this repository does not provide a universal installer.
+Available as readable sources and as [`../make-it-click.skill`](../make-it-click.skill), a ZIP package. Import compatibility depends on your AI platform; this repository does not provide a universal installer.
 
 The skill contains instructions only: no scripts, API keys, network access, or dependencies.
 
