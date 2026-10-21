@@ -17,7 +17,7 @@ Add or update its entry in the root README catalogue. Include readable source fi
 
 ## Skills and packaged artifacts
 
-For Quiz Forge, edit sources under `agent-skills/learning/quiz-forge/`. The `.skill` file is a ZIP archive. Rebuild it from `agent-skills/learning/` with the `quiz-forge/` directory as its archive root. Include skill resources and scripts; exclude the repository-only README, caches, and temporary files. Keep every existing packaged file synchronized with its source.
+Edit a skill's sources under its directory, for example `agent-skills/learning/quiz-forge/`. The `.skill` file is a ZIP archive. Rebuild it from the category directory (for example `agent-skills/learning/`) with the skill directory as its archive root. Include skill resources and scripts; exclude the repository-only README, caches, and temporary files. Keep every existing packaged file synchronized with its source.
 
 Run from the repository root:
 
