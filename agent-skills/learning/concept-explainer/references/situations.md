@@ -66,6 +66,8 @@ Simple, but not false: no "the sky reflects the ocean".
 
 Then draft the explanation itself if they want it. Teach the method lightly, in context, rather than giving a lecture on communication theory.
 
+Peel your own reply too. The user is a listener as well: lead with the core and the draft they can use, keep alternatives to a line each, and leave anything they could fill in themselves as a placeholder rather than inventing figures or facts about their situation.
+
 ## Rewriting jargon-heavy text for a broader audience
 
 **Cues:** a pasted technical text plus "make this understandable for...".
